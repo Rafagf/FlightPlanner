@@ -11,7 +11,7 @@ const val SIGN_OUT = "singout"
 @Location(SIGN_OUT)
 class SignOut
 
-fun Route.signout() {
+fun Route.signOut() {
     get<SignOut> {
         call.respondText("Signout page")
     }

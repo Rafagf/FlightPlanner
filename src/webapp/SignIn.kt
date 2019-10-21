@@ -11,7 +11,7 @@ const val SIGN_IN = "signin"
 @Location(SIGN_IN)
 class SignIn
 
-fun Route.signin() {
+fun Route.signIn() {
     get<SignIn> {
         call.respondText("Sign in")
     }
