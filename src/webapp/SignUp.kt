@@ -1,8 +1,10 @@
 package webapp
 
 import io.ktor.application.call
+import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.locations.Location
 import io.ktor.locations.get
+import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.Route
 
@@ -13,6 +15,6 @@ class SignUp
 
 fun Route.signUp() {
     get<SignUp> {
-        call.respondText("Sign up page")
+        call.respond(FreeMarkerContent("signup.ftl", null))
     }
 }
