@@ -1,7 +1,11 @@
 package com.rafag.flightplanner
 
+import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
 import io.ktor.application.install
+import io.ktor.freemarker.FreeMarker
+import io.ktor.http.content.resources
+import io.ktor.http.content.static
 import io.ktor.locations.Locations
 import io.ktor.routing.routing
 import webapp.*
@@ -14,6 +18,10 @@ fun Application.module(testing: Boolean = false) {
     installFeatures()
 
     routing {
+        static("/static") {
+            resources("images")
+        }
+
         home()
         about()
         flights()
@@ -25,5 +33,8 @@ fun Application.module(testing: Boolean = false) {
 
 private fun Application.installFeatures() {
     install(Locations)
+    install(FreeMarker) {
+        templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
+    }
 }
 
