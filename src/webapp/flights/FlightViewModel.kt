@@ -3,6 +3,7 @@ package com.rafag.flightplanner.webapp.flights
 import com.rafag.flightplanner.model.Flight
 import com.rafag.flightplanner.model.Price
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Locale
 
@@ -44,13 +45,13 @@ fun List<Flight>.map(): List<FlightViewModel> {
 }
 
 fun getDateFormatted(date: Date): String {
-    //TODO
-    return "depart date"
+    val format = SimpleDateFormat("dd/MM/yy")
+    return format.format(date)
 }
 
 fun getTimeFormatted(date: Date): String {
-    //TODO
-    return "x time"
+    val format = SimpleDateFormat("HH:mm")
+    return format.format(date)
 }
 
 fun getPriceFormatted(price: Price): String {

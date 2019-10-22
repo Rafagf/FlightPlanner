@@ -2,9 +2,6 @@ package com.rafag.flightplanner.model
 
 import java.math.BigDecimal
 import java.util.*
-import jdk.nashorn.internal.objects.NativeDate.getTime
-import java.util.Calendar
-
 
 
 typealias Price = BigDecimal
@@ -37,7 +34,7 @@ fun mockedFlights(): List<Flight> {
             price = Price(300.23)
         ),
         Flight(
-            departingDate = getDate(2019, 11, 29, 17, 30),
+            departingDate = getDate(2019, 11, 29, 19, 30),
             arrivalDate = getDate(2019, 11, 29, 19, 45),
             originCity = "London",
             originCountry = "UK",
@@ -49,7 +46,7 @@ fun mockedFlights(): List<Flight> {
             price = Price(100.23)
         ),
         Flight(
-            departingDate = getDate(2019, 12, 29, 15, 30),
+            departingDate = getDate(2019, 12, 29, 12, 30),
             arrivalDate = getDate(2019, 12, 29, 20, 45),
             originCity = "London",
             originCountry = "UK",
@@ -65,11 +62,11 @@ fun mockedFlights(): List<Flight> {
 
 private fun getDate(year: Int, month: Int, day: Int, hour: Int, minute: Int): Date {
     return Calendar.getInstance().run {
-        set(Calendar.YEAR, 2019)
-        set(Calendar.MONTH, 10)
-        set(Calendar.DAY_OF_MONTH, 30)
-        set(Calendar.HOUR_OF_DAY, 17)
-        set(Calendar.MINUTE, 30)
+        set(Calendar.YEAR, year)
+        set(Calendar.MONTH, month)
+        set(Calendar.DAY_OF_MONTH, day)
+        set(Calendar.HOUR_OF_DAY, hour)
+        set(Calendar.MINUTE, minute)
         time
     }
 }
