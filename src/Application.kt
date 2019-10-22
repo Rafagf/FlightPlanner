@@ -1,5 +1,6 @@
 package com.rafag.flightplanner
 
+import com.rafag.flightplanner.webapp.flights.flights
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
 import io.ktor.application.install
