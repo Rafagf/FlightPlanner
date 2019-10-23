@@ -1,15 +1,13 @@
 package com.rafag.flightplanner.webapp.flights
 
+import com.rafag.flightplanner.getDateFormatted
+import com.rafag.flightplanner.getPriceFormatted
+import com.rafag.flightplanner.getTimeFormatted
 import com.rafag.flightplanner.model.Flight
-import com.rafag.flightplanner.model.Price
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.Locale
 
 data class FlightViewModel(
     val bookingReference: String,
-    val departing: String,
+    val origin: String,
     val departingDate: String,
     val departingTime: String,
     val destination: String,
@@ -23,15 +21,15 @@ data class FlightViewModel(
 fun Flight.map(): FlightViewModel {
     return FlightViewModel(
         bookingReference = bookingReference,
-        departing = this.origin,
-        departingDate = getDateFormatted(this.departingDate),
-        departingTime = getTimeFormatted(this.departingDate),
+        origin = this.origin,
+        departingDate = this.departingDate.getDateFormatted(),
+        departingTime = this.departingDate.getTimeFormatted(),
         destination = this.destination,
-        arrivalDate = getDateFormatted(this.arrivalDate),
-        arrivalTime = getTimeFormatted(this.arrivalDate),
+        arrivalDate = this.arrivalDate.getDateFormatted(),
+        arrivalTime = this.arrivalDate.getTimeFormatted(),
         airline = airline,
         people = people,
-        price = getPriceFormatted(this.price)
+        price = this.price?.getPriceFormatted()
     )
 }
 
@@ -41,21 +39,4 @@ fun List<Flight>.map(): List<FlightViewModel> {
         list.add(it.map())
     }
     return list
-}
-
-fun getDateFormatted(date: Date): String {
-    val format = SimpleDateFormat("dd/MM/yy")
-    return format.format(date)
-}
-
-fun getTimeFormatted(date: Date): String {
-    val format = SimpleDateFormat("HH:mm")
-    return format.format(date)
-}
-
-fun getPriceFormatted(price: Price): String {
-    val numberFormat = NumberFormat.getCurrencyInstance(Locale.UK)
-    numberFormat.minimumFractionDigits = 1
-    numberFormat.maximumFractionDigits = 2
-    return numberFormat.format(price.toDouble())
 }
