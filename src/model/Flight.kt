@@ -7,6 +7,7 @@ import java.util.*
 typealias Price = BigDecimal
 
 data class Flight(
+    val id: Int,
     val departingDate: Date,
     val arrivalDate: Date,
     val origin: String,
@@ -20,6 +21,7 @@ data class Flight(
 fun mockedFlights(): List<Flight> {
     return listOf(
         Flight(
+            id = 1,
             departingDate = getDate(2019, 10, 29, 17, 30),
             arrivalDate = getDate(2019, 10, 29, 18, 45),
             origin = "London (UK)",
@@ -30,6 +32,7 @@ fun mockedFlights(): List<Flight> {
             price = Price(300.23)
         ),
         Flight(
+            id = 2,
             departingDate = getDate(2019, 11, 29, 19, 30),
             arrivalDate = getDate(2019, 11, 29, 19, 45),
             origin = "London (UK)",
@@ -40,6 +43,7 @@ fun mockedFlights(): List<Flight> {
             price = Price(100.23)
         ),
         Flight(
+            id = 3,
             departingDate = getDate(2019, 12, 29, 12, 30),
             arrivalDate = getDate(2019, 12, 29, 20, 45),
             origin = "London (UK)",

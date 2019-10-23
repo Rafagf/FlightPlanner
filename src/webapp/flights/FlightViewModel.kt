@@ -8,6 +8,7 @@ import java.util.*
 import java.util.Locale
 
 data class FlightViewModel(
+    val id: Int,
     val date: String,
     val departingTime: String,
     val arrivalTime: String,
@@ -21,6 +22,7 @@ data class FlightViewModel(
 
 fun Flight.map(): FlightViewModel {
     return FlightViewModel(
+        id = this.id,
         date = getDateFormatted(this.departingDate),
         departingTime = getTimeFormatted(this.departingDate),
         arrivalTime = getTimeFormatted(this.arrivalDate),
