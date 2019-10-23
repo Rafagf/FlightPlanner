@@ -9,24 +9,26 @@ import java.util.Locale
 
 data class FlightViewModel(
     val bookingReference: String,
-    val date: String,
+    val departing: String,
+    val departingDate: String,
     val departingTime: String,
-    val arrivalTime: String,
-    val origin: String,
     val destination: String,
-    val airline: String,
-    val people: Int,
-    val price: String
+    val arrivalDate: String,
+    val arrivalTime: String,
+    val airline: String?,
+    val people: Int?,
+    val price: String?
 )
 
 fun Flight.map(): FlightViewModel {
     return FlightViewModel(
         bookingReference = bookingReference,
-        date = getDateFormatted(this.departingDate),
+        departing = this.origin,
+        departingDate = getDateFormatted(this.departingDate),
         departingTime = getTimeFormatted(this.departingDate),
-        arrivalTime = getTimeFormatted(this.arrivalDate),
-        origin = this.origin,
         destination = this.destination,
+        arrivalDate = getDateFormatted(this.arrivalDate),
+        arrivalTime = getTimeFormatted(this.arrivalDate),
         airline = airline,
         people = people,
         price = getPriceFormatted(this.price)

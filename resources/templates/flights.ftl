@@ -21,8 +21,8 @@
              <tbody>
                  <#list flights as flight>
                      <tr>
-                         <td style="vertical-align:middle"><h4>${flight.date}</h4></td>
-                         <td style="vertical-align:middle"><h4>${flight.origin}</h4></td>
+                         <td style="vertical-align:middle"><h4>${flight.departingDate}</h4></td>
+                         <td style="vertical-align:middle"><h4>${flight.departing}</h4></td>
                          <td style="vertical-align:middle"><h4>${flight.destination}</h4></td>
                          <td style="vertical-align:middle"><h4>${flight.bookingReference}</h4></td>
                          <td style="vertical-align:middle"><h4>${flight.departingTime}</h4></td>
@@ -42,23 +42,17 @@
  <div class="panel-body">
     <form method="post" action="/flights">
 
-        Flight date:
-        <input type="date" name="date" required>
+        Booking reference:
+        <input type="text" name="bookingReference" required/> <small>required</small>
+        </br> </br>
+        Departing date & time:
+        <input type="datetime-local" name="origin-date"> <small>required</small>
         </br> </br>
         Origin:
-        <input type="text" name="origin" required/>
+        <input type="text" name="origin" required/> <small>required</small>
         </br> </br>
-        Departing time:
-        <input type="time" name="departing-time" required>
-        </br> </br>
-        Destination:
-        <input type="text" name="destination" required/>
-        </br> </br>
-        Arrival time:
-        <input type="time" name="arrival-time">
-        </br> </br>
-        Booking reference:
-        <input type="text" name="booking" />
+        Arrival date & time:
+        <input type="datetime-local" name="destination-date" required/> <small>required</small>
         </br> </br>
         Airline:
         <input type="text" name="airline" /><br>
