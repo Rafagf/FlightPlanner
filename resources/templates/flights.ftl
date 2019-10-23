@@ -38,4 +38,39 @@
          </table>
     </#if>
 
+<h3>Insert new flight:</h3>
+ <div class="panel-body">
+    <form method="post" action="/flights">
+
+        Flight date:
+        <input type="date" name="date" required>
+        </br> </br>
+        Origin:
+        <input type="text" name="origin" required/>
+        </br> </br>
+        Departing time:
+        <input type="time" name="departing-time" required>
+        </br> </br>
+        Destination:
+        <input type="text" name="destination" required/>
+        </br> </br>
+        Arrival time:
+        <input type="time" name="arrival-time">
+        </br> </br>
+        Booking reference:
+        <input type="text" name="booking" />
+        </br> </br>
+        Airline:
+        <input type="text" name="airline" /><br>
+        </br> </br>
+        People:
+        <input type="text" name="people" /><br>
+        </br> </br>
+        Price:
+        <input type="text" name="price" /><br>
+        </br> </br>
+        <input type="submit" value="Submit" />
+    </form>
+    </div>
+
 </@b.page>

@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Locale
 
-
 data class FlightViewModel(
     val date: String,
     val departingTime: String,
@@ -25,16 +24,14 @@ fun Flight.map(): FlightViewModel {
         date = getDateFormatted(this.departingDate),
         departingTime = getTimeFormatted(this.departingDate),
         arrivalTime = getTimeFormatted(this.arrivalDate),
-        origin = getLocationFormatted(this.originCity, this.originCountry),
-        destination = getLocationFormatted(this.destinationCity, this.destinationCountry),
+        origin = this.origin,
+        destination = this.destination,
         bookingReference = bookingReference,
         airline = airline,
         people = people,
         price = getPriceFormatted(this.price)
     )
 }
-
-fun getLocationFormatted(city: String, country: String) = "$city ($country)"
 
 fun List<Flight>.map(): List<FlightViewModel> {
     val list = mutableListOf<FlightViewModel>()
