@@ -8,13 +8,12 @@ import java.util.*
 import java.util.Locale
 
 data class FlightViewModel(
-    val id: Int,
+    val bookingReference: String,
     val date: String,
     val departingTime: String,
     val arrivalTime: String,
     val origin: String,
     val destination: String,
-    val bookingReference: String,
     val airline: String,
     val people: Int,
     val price: String
@@ -22,13 +21,12 @@ data class FlightViewModel(
 
 fun Flight.map(): FlightViewModel {
     return FlightViewModel(
-        id = this.id,
+        bookingReference = bookingReference,
         date = getDateFormatted(this.departingDate),
         departingTime = getTimeFormatted(this.departingDate),
         arrivalTime = getTimeFormatted(this.arrivalDate),
         origin = this.origin,
         destination = this.destination,
-        bookingReference = bookingReference,
         airline = airline,
         people = people,
         price = getPriceFormatted(this.price)
