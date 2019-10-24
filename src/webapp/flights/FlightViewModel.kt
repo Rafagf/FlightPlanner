@@ -34,9 +34,7 @@ fun Flight.map(): FlightViewModel {
 }
 
 fun List<Flight>.map(): List<FlightViewModel> {
-    val list = mutableListOf<FlightViewModel>()
-    this.forEach {
-        list.add(it.map())
+    return map {
+        it.map()
     }
-    return list
 }
