@@ -41,7 +41,7 @@
 <h3>Insert new flight:</h3>
  <div class="panel-body">
     <form method="post" action="/flights">
-
+        <input type="hidden" name="action" value="add">
         Booking reference:
         <input type="text" name="bookingReference" required/> <small>required</small>
         </br> </br>

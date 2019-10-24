@@ -56,9 +56,9 @@ private fun createFlightFromParams(params: Parameters): Flight {
         params["bookingReference"] ?: throw IllegalArgumentException("Missing argument: bookingReference")
     val origin = params["origin"] ?: throw IllegalArgumentException("Missing argument: destination")
     val destination = params["destination"] ?: throw IllegalArgumentException("Missing argument: destination")
-    val departingDate = params["departingDate"] ?: throw IllegalArgumentException("Missing argument: date")
+    val departingDate = params["departing_date"] ?: throw IllegalArgumentException("Missing argument: date")
     val arrivalDate =
-        params["arrivalDate"] ?: throw IllegalArgumentException("Missing argument: arrivalDate")
+        params["arrival_date"] ?: throw IllegalArgumentException("Missing argument: arrivalDate")
     val airline: String? = params["airline"]
     val people: String? = params["people"]
     val price: String? = params["price"]
