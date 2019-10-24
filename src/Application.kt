@@ -1,5 +1,8 @@
 package com.rafag.flightplanner
 
+import com.rafag.flightplanner.repository.Repository
+import com.rafag.flightplanner.repository.RepositoryImpl
+import com.rafag.flightplanner.repository.db.DatabaseFactory
 import com.rafag.flightplanner.webapp.flights.flights
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
@@ -16,6 +19,8 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
+    val repository = initDatabase()
+
     installFeatures()
 
     routing {
@@ -25,11 +30,16 @@ fun Application.module(testing: Boolean = false) {
 
         home()
         about()
-        flights()
+        flights(repository)
         signIn()
         signOut()
         signUp()
     }
+}
+
+private fun initDatabase(): Repository {
+    DatabaseFactory.init()
+    return RepositoryImpl()
 }
 
 private fun Application.installFeatures() {
