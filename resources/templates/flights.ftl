@@ -42,30 +42,32 @@
  <div class="panel-body">
     <form method="post" action="/flights">
         <input type="hidden" name="action" value="add">
-        Booking reference:
-        <input type="text" name="bookingReference" required/> <small>required</small>
+        Booking reference (*) </br>
+        <input type="text" name="bookingReference" required/>
         </br> </br>
-        Origin:
-        <input type="text" name="origin" required/> <small>required</small>
+        Origin (*) </br>
+        <input type="text" name="origin" required/>
         </br> </br>
-        Departing date & time:
-        <input type="datetime-local" name="departing_date"> <small>required</small>
+        Departing date & time (*) </br>
+        <input type="datetime-local" name="departing_date">
         </br> </br>
-        Destination:
-        <input type="text" name="destination" required/> <small>required</small>
+        Destination (*) </br>
+        <input type="text" name="destination" required/>
         </br> </br>
-        Arrival date & time:
-        <input type="datetime-local" name="arrival_date" required/> <small>required</small>
+        Arrival date & time (*) </br>
+        <input type="datetime-local" name="arrival_date" required/>
         </br> </br>
-        Airline:
-        <input type="text" name="airline" /><br>
+        Airline: </br>
+        <input type="text" name="airline" />
         </br> </br>
-        People:
-        <input type="text" name="people" /><br>
+        People: </br>
+        <input type="text" name="people" />
         </br> </br>
-        Price:
-        <input type="text" name="price" /><br>
+        Price: </br>
+        <input type="text" name="price" />
         </br> </br>
+        <small> *Required </small>
+        </br>
         <input type="submit" value="Submit" />
     </form>
     </div>
