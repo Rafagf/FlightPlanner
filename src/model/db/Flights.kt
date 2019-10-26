@@ -1,4 +1,4 @@
-package com.rafag.flightplanner.repositories.db
+package com.rafag.flightplanner.model.db
 
 import org.jetbrains.exposed.sql.Table
 

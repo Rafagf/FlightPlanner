@@ -1,8 +1,8 @@
 package com.rafag.flightplanner.repositories.flights
 
-import com.rafag.flightplanner.model.Flight
-import com.rafag.flightplanner.repositories.db.DatabaseFactory.dbQuery
-import com.rafag.flightplanner.repositories.db.Flights
+import com.rafag.flightplanner.model.domain.Flight
+import com.rafag.flightplanner.DatabaseFactory.dbQuery
+import com.rafag.flightplanner.model.db.Flights
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.joda.time.DateTime

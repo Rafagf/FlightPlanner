@@ -1,4 +1,4 @@
-package com.rafag.flightplanner.model
+package com.rafag.flightplanner.model.domain
 
 import java.math.BigDecimal
 import java.util.*

@@ -1,5 +1,6 @@
-package com.rafag.flightplanner.repositories.db
+package com.rafag.flightplanner
 
+import com.rafag.flightplanner.model.db.Flights
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers

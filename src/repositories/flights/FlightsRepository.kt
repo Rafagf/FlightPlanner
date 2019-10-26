@@ -1,6 +1,6 @@
 package com.rafag.flightplanner.repositories.flights
 
-import com.rafag.flightplanner.model.Flight
+import com.rafag.flightplanner.model.domain.Flight
 
 interface FlightsRepository {
     suspend fun add(flight: Flight): Flight?

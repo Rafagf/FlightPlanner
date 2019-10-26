@@ -1,9 +1,9 @@
 package com.rafag.flightplanner.webapp.flights
 
 import com.rafag.flightplanner.getDate
-import com.rafag.flightplanner.model.Flight
-import com.rafag.flightplanner.model.Price
-import com.rafag.flightplanner.repository.Repository
+import com.rafag.flightplanner.model.domain.Flight
+import com.rafag.flightplanner.model.domain.Price
+import com.rafag.flightplanner.repositories.flights.FlightsRepository
 import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent
@@ -20,13 +20,16 @@ const val FLIGHTS = "flights"
 @Location(FLIGHTS)
 class Flights
 
-fun Route.flights(repository: Repository) {
+fun Route.flights(
+    flightsRepository: FlightsRepository,
+    userHashFunction: (String) -> String
+) {
     get<Flights> {
         call.respond(
             FreeMarkerContent(
                 template = "flights.ftl",
                 model = mapOf(
-                    "flights" to repository.getFlights().map()
+                    "flights" to flightsRepository.getFlights().map()
                 )
             )
         )
@@ -39,10 +42,10 @@ fun Route.flights(repository: Repository) {
         when (action) {
             "delete" -> {
                 val id = params["id"] ?: throw java.lang.IllegalArgumentException("Missing id")
-                repository.remove(id)
+                flightsRepository.remove(id)
             }
             "add" -> {
-                repository.add(createFlightFromParams(params))
+                flightsRepository.add(createFlightFromParams(params))
             }
         }
 

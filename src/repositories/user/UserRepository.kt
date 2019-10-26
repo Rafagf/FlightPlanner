@@ -1,6 +1,6 @@
 package com.rafag.flightplanner.repositories.user
 
-import com.rafag.flightplanner.model.User
+import com.rafag.flightplanner.model.domain.User
 
 interface UserRepository {
     suspend fun getUser(userId: String, hash: String? = null): User?

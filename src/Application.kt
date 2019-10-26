@@ -1,7 +1,6 @@
 package com.rafag.flightplanner
 
 import com.rafag.flightplanner.model.UserSession
-import com.rafag.flightplanner.repositories.db.DatabaseFactory
 import com.rafag.flightplanner.repositories.flights.FlightsRepositoryImpl
 import com.rafag.flightplanner.repositories.user.UserRepositoryImpl
 import com.rafag.flightplanner.webapp.flights.flights

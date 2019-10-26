@@ -1,6 +1,6 @@
 package com.rafag.flightplanner
 
-import com.rafag.flightplanner.model.Price
+import com.rafag.flightplanner.model.domain.Price
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*

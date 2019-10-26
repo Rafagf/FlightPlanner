@@ -3,7 +3,7 @@ package com.rafag.flightplanner.webapp.flights
 import com.rafag.flightplanner.getDateFormatted
 import com.rafag.flightplanner.getPriceFormatted
 import com.rafag.flightplanner.getTimeFormatted
-import com.rafag.flightplanner.model.Flight
+import com.rafag.flightplanner.model.domain.Flight
 
 data class FlightViewModel(
     val bookingReference: String,
