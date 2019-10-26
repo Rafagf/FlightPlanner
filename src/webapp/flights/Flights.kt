@@ -54,7 +54,7 @@ fun Route.flights(
                 )
             )
 
-            call.respond(FreeMarkerContent("phrases.ftl", mapOf("flights" to flights, "user" to user, "date" to date, "code" to code)))
+            call.respond(FreeMarkerContent("flights.ftl", mapOf("flights" to flights, "user" to user, "date" to date, "code" to code)))
         }
     }
 

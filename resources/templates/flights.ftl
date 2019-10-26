@@ -31,6 +31,13 @@
                          <td style="vertical-align:middle"><h4>${flight.people}</h4></td>
                          <td style="vertical-align:middle"><h4>${flight.price}</h4></td>
                          <td class="col-md-1" style="text-align:center;vertical-align:middle;">
+                            <form method="post" action="/flights">
+                                <input type="hidden" name="date" value="${date?c}">
+                                <input type="hidden" name="code" value="${code}">
+                                <input type="hidden" name="id" value="${flight.bookingReference}">
+                                <input type="hidden" name="action" value="delete">
+                                <input type="image" src="/static/delete.png" width="24" height="24" border="0 alt="Delete" />
+                            </form>
                          </td>
                      </tr>
                  </#list>
