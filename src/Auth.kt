@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit
 import javax.crypto.*
 import javax.crypto.spec.*
 
+const val COOKIES_SESSION = "COOKIES_SESSION"
 const val MIN_USER_ID_LENGTH = 4
 const val MIN_PASSWORD_LENGTH = 6
 

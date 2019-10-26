@@ -38,7 +38,7 @@ fun Route.flights(
         if (user == null) {
             call.redirect(SignIn())
         } else {
-            val flights = flightsRepository.getFlights()
+            val flights = flightsRepository.getFlights(user.userId)
             val date = System.currentTimeMillis()
             val code = call.securityCode(date, user, hashFunction)
 
@@ -46,7 +46,7 @@ fun Route.flights(
                 FreeMarkerContent(
                     template = "flights.ftl",
                     model = mapOf(
-                        "flights" to flightsRepository.getFlights().map(),
+                        "flights" to flightsRepository.getFlights(user.userId).map(),
                         "user" to user,
                         "date" to date,
                         "code" to code
@@ -54,7 +54,12 @@ fun Route.flights(
                 )
             )
 
-            call.respond(FreeMarkerContent("flights.ftl", mapOf("flights" to flights, "user" to user, "date" to date, "code" to code)))
+            call.respond(
+                FreeMarkerContent(
+                    "flights.ftl",
+                    mapOf("flights" to flights, "user" to user, "date" to date, "code" to code)
+                )
+            )
         }
     }
 
@@ -75,7 +80,7 @@ fun Route.flights(
                 flightsRepository.remove(id)
             }
             "add" -> {
-                flightsRepository.add(createFlightFromParams(params))
+                flightsRepository.add(createFlight(params = params), userId = user!!.userId)
             }
         }
 
@@ -83,7 +88,7 @@ fun Route.flights(
     }
 }
 
-private fun createFlightFromParams(params: Parameters): Flight {
+private fun createFlight(params: Parameters): Flight {
     val bookingReference =
         params["bookingReference"] ?: throw IllegalArgumentException("Missing argument: bookingReference")
     val origin = params["origin"] ?: throw IllegalArgumentException("Missing argument: destination")

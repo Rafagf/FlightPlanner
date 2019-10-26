@@ -7,8 +7,8 @@ import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 
-object UserRepositoryImpl : UserRepository {
-    override suspend fun userByEmail(email: String): User? {
+object UserRepository {
+    suspend fun userByEmail(email: String): User? {
         return dbQuery {
             Users.select {
                 Users.email.eq(email)
@@ -18,7 +18,7 @@ object UserRepositoryImpl : UserRepository {
         }
     }
 
-    override suspend fun getUser(userId: String): User? {
+    suspend fun getUser(userId: String): User? {
         return dbQuery {
             Users.select {
                 (Users.id eq userId)
@@ -28,7 +28,7 @@ object UserRepositoryImpl : UserRepository {
         }
     }
 
-    override suspend fun getUserWithHash(userId: String, hash: String): User? {
+    suspend fun getUserWithHash(userId: String, hash: String): User? {
         val user: User? = dbQuery {
             Users.select {
                 (Users.id eq userId)
@@ -43,7 +43,7 @@ object UserRepositoryImpl : UserRepository {
         }
     }
 
-    override suspend fun createUser(user: User) {
+    suspend fun createUser(user: User) {
         dbQuery {
             Users.insert {
                 it[id] = user.userId

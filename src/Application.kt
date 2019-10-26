@@ -1,8 +1,8 @@
 package com.rafag.flightplanner
 
 import com.rafag.flightplanner.model.UserSession
-import com.rafag.flightplanner.repositories.flights.FlightsRepositoryImpl
-import com.rafag.flightplanner.repositories.user.UserRepositoryImpl
+import com.rafag.flightplanner.repositories.flights.FlightsRepository
+import com.rafag.flightplanner.repositories.user.UserRepository
 import com.rafag.flightplanner.webapp.flights.flights
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
@@ -38,12 +38,12 @@ fun Application.module(testing: Boolean = false) {
             resources("images")
         }
 
-        home(UserRepositoryImpl)
-        about(UserRepositoryImpl)
-        flights(UserRepositoryImpl, FlightsRepositoryImpl, userHashFunction)
-        signIn(UserRepositoryImpl, userHashFunction)
+        home(UserRepository)
+        about(UserRepository)
+        flights(UserRepository, FlightsRepository, userHashFunction)
+        signIn(UserRepository, userHashFunction)
         signOut()
-        signUp(UserRepositoryImpl, userHashFunction)
+        signUp(UserRepository, userHashFunction)
     }
 }
 
@@ -63,7 +63,7 @@ private fun Application.installFeatures() {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
     install(Sessions) {
-        cookie<UserSession>("SESSION") {
+        cookie<UserSession>(COOKIES_SESSION) {
             transform(SessionTransportTransformerMessageAuthentication(hashKey))
         }
     }
