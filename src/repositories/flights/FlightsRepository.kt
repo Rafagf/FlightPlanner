@@ -1,8 +1,8 @@
-package com.rafag.flightplanner.repository
+package com.rafag.flightplanner.repositories.flights
 
 import com.rafag.flightplanner.model.Flight
 
-interface Repository {
+interface FlightsRepository {
     suspend fun add(flight: Flight): Flight?
     suspend fun getFlight(id: String): Flight?
     suspend fun getFlights(): List<Flight>

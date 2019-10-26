@@ -1,13 +1,13 @@
-package com.rafag.flightplanner.repository
+package com.rafag.flightplanner.repositories.flights
 
 import com.rafag.flightplanner.model.Flight
-import com.rafag.flightplanner.repository.db.DatabaseFactory.dbQuery
-import com.rafag.flightplanner.repository.db.FlightsTable
+import com.rafag.flightplanner.repositories.db.DatabaseFactory.dbQuery
+import com.rafag.flightplanner.repositories.db.FlightsTable
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.joda.time.DateTime
 
-class RepositoryImpl : Repository {
+class FlightsRepositoryImpl : FlightsRepository {
     override suspend fun add(flight: Flight): Flight? {
         return dbQuery {
             val insertStatement = transaction {

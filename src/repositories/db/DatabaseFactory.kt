@@ -1,4 +1,4 @@
-package com.rafag.flightplanner.repository.db
+package com.rafag.flightplanner.repositories.db
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
