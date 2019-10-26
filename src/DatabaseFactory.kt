@@ -1,6 +1,7 @@
 package com.rafag.flightplanner
 
 import com.rafag.flightplanner.model.db.Flights
+import com.rafag.flightplanner.model.db.Users
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.Dispatchers
@@ -16,6 +17,7 @@ object DatabaseFactory {
 
         transaction {
             SchemaUtils.create(Flights)
+            SchemaUtils.create(Users)
         }
     }
 
