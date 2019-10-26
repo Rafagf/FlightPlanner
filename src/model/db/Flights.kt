@@ -9,7 +9,7 @@ object Flights : Table() {
     val arrivalDate = datetime("arrival_date")
     val origin = varchar("origin", 64)
     val destination = varchar("destination", 64)
-    val airline = varchar("airline", 64).nullable()
-    val people = integer("people").nullable()
-    val price = decimal("price", 7, 2).nullable()
+    val airline = varchar("airline", 64)
+    val people = integer("people")
+    val price = decimal("price", 7, 2)
 }

@@ -13,9 +13,9 @@ data class FlightViewModel(
     val destination: String,
     val arrivalDate: String,
     val arrivalTime: String,
-    val airline: String?,
-    val people: Int?,
-    val price: String?
+    val airline: String,
+    val people: Int,
+    val price: String
 )
 
 fun Flight.map(): FlightViewModel {
@@ -27,9 +27,9 @@ fun Flight.map(): FlightViewModel {
         destination = this.destination,
         arrivalDate = this.arrivalDate.getDateFormatted(),
         arrivalTime = this.arrivalDate.getTimeFormatted(),
-        airline = airline,
-        people = people,
-        price = this.price?.getPriceFormatted()
+        airline = this.airline,
+        people = this.people,
+        price = this.price.getPriceFormatted()
     )
 }
 

@@ -51,31 +51,30 @@
         <input type="hidden" name="date" value="${date?c}">
         <input type="hidden" name="code" value="${code}">
         <input type="hidden" name="action" value="add">
-        Booking reference (*) </br>
+        Booking reference </br>
         <input type="text" name="bookingReference" required/>
         </br> </br>
-        Origin (*) </br>
+        Origin </br>
         <input type="text" name="origin" required/>
         </br> </br>
-        Departing date & time (*) </br>
+        Departing date & time </br>
         <input type="datetime-local" name="departing_date" value="2020-01-01T10:00" required>
         </br> </br>
-        Destination (*) </br>
+        Destination </br>
         <input type="text" name="destination" required/>
         </br> </br>
-        Arrival date & time (*) </br>
+        Arrival date & time </br>
         <input type="datetime-local" name="arrival_date" value="2020-01-01T10:00" required/>
         </br> </br>
         Airline: </br>
-        <input type="text" name="airline" />
+        <input type="text" name="airline" required/>
         </br> </br>
         People: </br>
-        <input type="text" name="people" />
+        <input type="text" name="people" required/>
         </br> </br>
         Price: </br>
-        <input type="text" name="price" />
+        <input type="text" name="price" required/>
         </br> </br>
-        <small> *Required </small>
         </br>
         <input type="submit" value="Submit" />
     </form>

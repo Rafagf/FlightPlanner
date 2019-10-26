@@ -1,13 +1,13 @@
 package com.rafag.flightplanner.webapp.flights
 
+import com.rafag.flightplanner.auth.securityCode
+import com.rafag.flightplanner.auth.verifyCode
 import com.rafag.flightplanner.getDate
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.model.domain.Flight
 import com.rafag.flightplanner.model.domain.Price
 import com.rafag.flightplanner.repositories.flights.FlightsRepository
 import com.rafag.flightplanner.repositories.user.UserRepository
-import com.rafag.flightplanner.auth.securityCode
-import com.rafag.flightplanner.auth.verifyCode
 import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent
@@ -95,9 +95,9 @@ private fun createFlight(params: Parameters): Flight {
     val destination = params["destination"] ?: throw IllegalArgumentException("Missing argument: destination")
     val departingDate = params["departing_date"] ?: throw IllegalArgumentException("Missing argument: date")
     val arrivalDate = params["arrival_date"] ?: throw IllegalArgumentException("Missing argument: arrivalDate")
-    val airline: String? = params["airline"]
-    val people: String? = params["people"]
-    val price: String? = params["price"]
+    val airline = params["airline"] ?: throw IllegalArgumentException("Missing argument: airline")
+    val people = params["people"] ?: throw IllegalArgumentException("Missing argument: people")
+    val price = params["price"] ?: throw IllegalArgumentException("Missing argument: price")
 
     return Flight(
         bookingReference = bookingReference,
@@ -106,7 +106,7 @@ private fun createFlight(params: Parameters): Flight {
         origin = origin,
         destination = destination,
         airline = airline,
-        people = people?.toInt(),
-        price = price?.toDouble()?.let { Price(it) }
+        people = people.toInt(),
+        price = Price(price.toDouble())
     )
 }
