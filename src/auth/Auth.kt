@@ -1,4 +1,4 @@
-package com.rafag.flightplanner
+package com.rafag.flightplanner.auth
 
 import com.rafag.flightplanner.model.domain.User
 import io.ktor.application.ApplicationCall

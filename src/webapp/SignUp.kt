@@ -1,11 +1,11 @@
 package webapp
 
-import com.rafag.flightplanner.MIN_PASSWORD_LENGTH
-import com.rafag.flightplanner.MIN_USER_ID_LENGTH
+import com.rafag.flightplanner.auth.MIN_PASSWORD_LENGTH
+import com.rafag.flightplanner.auth.MIN_USER_ID_LENGTH
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.model.domain.User
 import com.rafag.flightplanner.repositories.user.UserRepository
-import com.rafag.flightplanner.userNameValid
+import com.rafag.flightplanner.auth.userNameValid
 import com.rafag.flightplanner.webapp.flights.Flights
 import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call

@@ -1,5 +1,11 @@
 package com.rafag.flightplanner
 
+import api.flightsApi
+import api.loginApi
+import com.rafag.flightplanner.auth.COOKIES_SESSION
+import com.rafag.flightplanner.auth.JwtService
+import com.rafag.flightplanner.auth.hash
+import com.rafag.flightplanner.auth.hashKey
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.repositories.flights.FlightsRepository
 import com.rafag.flightplanner.repositories.user.UserRepository
@@ -8,9 +14,13 @@ import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
+import io.ktor.auth.Authentication
+import io.ktor.auth.jwt.jwt
+import io.ktor.features.ContentNegotiation
 import io.ktor.features.DefaultHeaders
 import io.ktor.features.StatusPages
 import io.ktor.freemarker.FreeMarker
+import io.ktor.gson.gson
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.resources
@@ -44,6 +54,10 @@ fun Application.module(testing: Boolean = false) {
         signIn(UserRepository, userHashFunction)
         signOut()
         signUp(UserRepository, userHashFunction)
+
+        //Api
+        flightsApi(FlightsRepository)
+        loginApi(UserRepository, JwtService)
     }
 }
 
@@ -66,5 +80,23 @@ private fun Application.installFeatures() {
         cookie<UserSession>(COOKIES_SESSION) {
             transform(SessionTransportTransformerMessageAuthentication(hashKey))
         }
+    }
+
+    install(Authentication) {
+        jwt("jwt") {
+            verifier(JwtService.verifier)
+            realm = "flightplanner app"
+            validate {
+                val payload = it.payload
+                val claim = payload.getClaim("id")
+                val claimString = claim.asString()
+                val user = UserRepository.getUser(claimString)
+                user
+            }
+        }
+    }
+
+    install(ContentNegotiation) {
+        gson()
     }
 }
