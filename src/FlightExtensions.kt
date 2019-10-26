@@ -5,13 +5,17 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
+private const val DATE_TIME_PATTERN = "yyyy-MM-dd'T'hh:mm"
+private const val DATE_PATTERN = "dd/MM/yy"
+private const val TIME_PATTERN = "HH:mm"
+
 fun Date.getDateFormatted(): String {
-    val format = SimpleDateFormat("dd/MM/yy")
+    val format = SimpleDateFormat(DATE_PATTERN)
     return format.format(this)
 }
 
 fun Date.getTimeFormatted(): String {
-    val format = SimpleDateFormat("HH:mm")
+    val format = SimpleDateFormat(TIME_PATTERN)
     return format.format(this)
 }
 
@@ -23,6 +27,6 @@ fun Price.getPriceFormatted(): String {
 }
 
 fun String.getDate(): Date {
-    //TODO implement
-    return Calendar.getInstance().time
+    val format = SimpleDateFormat(DATE_TIME_PATTERN)
+    return format.parse(this)
 }

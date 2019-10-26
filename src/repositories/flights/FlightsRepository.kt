@@ -66,7 +66,7 @@ object FlightsRepository {
         return Flight(
             bookingReference = this[Flights.bookingReference],
             departingDate = this[Flights.departingDate].toDate(),
-            arrivalDate = this[Flights.departingDate].toDate(),
+            arrivalDate = this[Flights.arrivalDate].toDate(),
             origin = this[Flights.origin],
             destination = this[Flights.destination],
             airline = this[Flights.airline],
