@@ -2,16 +2,16 @@ package com.rafag.flightplanner.repositories.flights
 
 import com.rafag.flightplanner.model.Flight
 import com.rafag.flightplanner.repositories.db.DatabaseFactory.dbQuery
-import com.rafag.flightplanner.repositories.db.FlightsTable
+import com.rafag.flightplanner.repositories.db.Flights
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.joda.time.DateTime
 
-class FlightsRepositoryImpl : FlightsRepository {
+object FlightsRepositoryImpl : FlightsRepository {
     override suspend fun add(flight: Flight): Flight? {
         return dbQuery {
             val insertStatement = transaction {
-                FlightsTable.insert {
+                Flights.insert {
                     it[bookingReference] = flight.bookingReference
                     it[departingDate] = DateTime(flight.departingDate)
                     it[arrivalDate] = DateTime(flight.arrivalDate)
@@ -29,8 +29,8 @@ class FlightsRepositoryImpl : FlightsRepository {
 
     override suspend fun getFlight(id: String): Flight? {
         return dbQuery {
-            FlightsTable.select {
-                (FlightsTable.bookingReference eq id)
+            Flights.select {
+                (Flights.bookingReference eq id)
             }.mapNotNull {
                 it.toFlight()
             }.singleOrNull()
@@ -39,7 +39,7 @@ class FlightsRepositoryImpl : FlightsRepository {
 
     override suspend fun getFlights(): List<Flight> {
         return dbQuery {
-            FlightsTable.selectAll().mapNotNull {
+            Flights.selectAll().mapNotNull {
                 it.toFlight()
             }
         }
@@ -47,28 +47,28 @@ class FlightsRepositoryImpl : FlightsRepository {
 
     override suspend fun remove(id: String) {
         return dbQuery {
-            FlightsTable.deleteWhere {
-                FlightsTable.bookingReference eq id
+            Flights.deleteWhere {
+                Flights.bookingReference eq id
             }
         }
     }
 
     override suspend fun clearAll() {
         return dbQuery {
-            FlightsTable.deleteAll()
+            Flights.deleteAll()
         }
     }
 
     private fun ResultRow.toFlight(): Flight {
         return Flight(
-            bookingReference = this[FlightsTable.bookingReference],
-            departingDate = this[FlightsTable.departingDate].toDate(),
-            arrivalDate = this[FlightsTable.departingDate].toDate(),
-            origin = this[FlightsTable.origin],
-            destination = this[FlightsTable.destination],
-            airline = this[FlightsTable.airline],
-            people = this[FlightsTable.people],
-            price = this[FlightsTable.price]
+            bookingReference = this[Flights.bookingReference],
+            departingDate = this[Flights.departingDate].toDate(),
+            arrivalDate = this[Flights.departingDate].toDate(),
+            origin = this[Flights.origin],
+            destination = this[Flights.destination],
+            airline = this[Flights.airline],
+            people = this[Flights.people],
+            price = this[Flights.price]
         )
     }
 }

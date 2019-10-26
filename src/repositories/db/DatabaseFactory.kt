@@ -14,7 +14,7 @@ object DatabaseFactory {
         Database.connect(hiraki())
 
         transaction {
-            SchemaUtils.create(FlightsTable)
+            SchemaUtils.create(Flights)
         }
     }
 
