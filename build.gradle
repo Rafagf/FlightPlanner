@@ -41,3 +41,5 @@ dependencies {
     compile "org.postgresql:postgresql:$postgres_version"
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
+
+task stage(dependsOn: ['installDist'])
