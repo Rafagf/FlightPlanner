@@ -41,6 +41,8 @@
 <h3>Insert new flight:</h3>
  <div class="panel-body">
     <form method="post" action="/flights">
+        <input type="hidden" name="date" value="${date?c}">
+        <input type="hidden" name="code" value="${code}">
         <input type="hidden" name="action" value="add">
         Booking reference (*) </br>
         <input type="text" name="bookingReference" required/>
@@ -49,13 +51,13 @@
         <input type="text" name="origin" required/>
         </br> </br>
         Departing date & time (*) </br>
-        <input type="datetime-local" name="departing_date">
+        <input type="datetime-local" name="departing_date" value="2020-01-01T10:00" required>
         </br> </br>
         Destination (*) </br>
         <input type="text" name="destination" required/>
         </br> </br>
         Arrival date & time (*) </br>
-        <input type="datetime-local" name="arrival_date" required/>
+        <input type="datetime-local" name="arrival_date" value="2020-01-01T10:00" required/>
         </br> </br>
         Airline: </br>
         <input type="text" name="airline" />

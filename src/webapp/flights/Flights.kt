@@ -1,9 +1,13 @@
 package com.rafag.flightplanner.webapp.flights
 
 import com.rafag.flightplanner.getDate
+import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.model.domain.Flight
 import com.rafag.flightplanner.model.domain.Price
 import com.rafag.flightplanner.repositories.flights.FlightsRepository
+import com.rafag.flightplanner.repositories.user.UserRepository
+import com.rafag.flightplanner.securityCode
+import com.rafag.flightplanner.verifyCode
 import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent
@@ -14,6 +18,9 @@ import io.ktor.locations.post
 import io.ktor.request.receiveParameters
 import io.ktor.response.respond
 import io.ktor.routing.Route
+import io.ktor.sessions.get
+import io.ktor.sessions.sessions
+import webapp.SignIn
 
 const val FLIGHTS = "flights"
 
@@ -21,23 +28,46 @@ const val FLIGHTS = "flights"
 class Flights
 
 fun Route.flights(
+    userRepository: UserRepository,
     flightsRepository: FlightsRepository,
-    userHashFunction: (String) -> String
+    hashFunction: (String) -> String
 ) {
     get<Flights> {
-        call.respond(
-            FreeMarkerContent(
-                template = "flights.ftl",
-                model = mapOf(
-                    "flights" to flightsRepository.getFlights().map()
+        val user = call.sessions.get<UserSession>()?.let { userRepository.getUser(it.userId) }
+
+        if (user == null) {
+            call.redirect(SignIn())
+        } else {
+            val flights = flightsRepository.getFlights()
+            val date = System.currentTimeMillis()
+            val code = call.securityCode(date, user, hashFunction)
+
+            call.respond(
+                FreeMarkerContent(
+                    template = "flights.ftl",
+                    model = mapOf(
+                        "flights" to flightsRepository.getFlights().map(),
+                        "user" to user,
+                        "date" to date,
+                        "code" to code
+                    )
                 )
             )
-        )
+
+            call.respond(FreeMarkerContent("phrases.ftl", mapOf("flights" to flights, "user" to user, "date" to date, "code" to code)))
+        }
     }
 
     post<Flights> {
+        val user = call.sessions.get<UserSession>()?.let { userRepository.getUser(it.userId) }
         val params = call.receiveParameters()
+        val date = params["date"]?.toLongOrNull() ?: return@post call.redirect(it)
+        val code = params["code"] ?: return@post call.redirect(it)
         val action = params["action"] ?: throw IllegalArgumentException("Missing action")
+
+        if (user == null || !call.verifyCode(date, user, code, hashFunction)) {
+            call.redirect(SignIn())
+        }
 
         when (action) {
             "delete" -> {
