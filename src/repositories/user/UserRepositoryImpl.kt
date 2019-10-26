@@ -2,9 +2,15 @@ package com.rafag.flightplanner.repositories.user
 
 import com.rafag.flightplanner.model.User
 
-class UserRepositoryImpl : UserRepository {
-    override suspend fun createUser(userId: String, hash: String?): User? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+object UserRepositoryImpl : UserRepository {
+    override suspend fun userByEmail(email: String): User? {
+        return null
     }
 
+    override suspend fun getUser(userId: String, hash: String?): User? {
+        return null
+    }
+
+    override suspend fun createUser(user: User) {
+    }
 }
