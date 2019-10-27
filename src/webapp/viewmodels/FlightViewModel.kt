@@ -1,4 +1,4 @@
-package com.rafag.flightplanner.webapp
+package com.rafag.flightplanner.webapp.viewmodel
 
 import com.rafag.flightplanner.getDateFormatted
 import com.rafag.flightplanner.getPriceFormatted
