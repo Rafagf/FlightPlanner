@@ -16,7 +16,7 @@ Although the website does not use it, an API has been provided to login and add 
 By doing a POST in */login* with your username and password you'll get your token to then do POST in */api/v1/flights* and add new flights into your account.
 
 ### Next steps
-Some things I have in mind to do to improve the project. PR/ or issues are more than welcome!  
+Some things I have in mind to do to improve the project. PR or issues are more than welcome!  
 * Error handling is almost non-existent in the API side.
 * No unit-tests (need to figure out *what* to test)
 * The front-end is a bit rubbish
