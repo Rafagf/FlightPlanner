@@ -5,7 +5,7 @@ import com.rafag.flightplanner.auth.MIN_USER_ID_LENGTH
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.repositories.user.UserRepository
 import com.rafag.flightplanner.auth.userNameValid
-import com.rafag.flightplanner.webapp.flights.Flights
+import com.rafag.flightplanner.webapp.Flights
 import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent

@@ -9,7 +9,7 @@ import com.rafag.flightplanner.auth.hashKey
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.repositories.flights.FlightsRepository
 import com.rafag.flightplanner.repositories.user.UserRepository
-import com.rafag.flightplanner.webapp.flights.flights
+import com.rafag.flightplanner.webapp.flights
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
 import io.ktor.application.call
