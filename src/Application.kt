@@ -12,6 +12,7 @@ import com.rafag.flightplanner.repositories.user.UserRepository
 import com.rafag.flightplanner.webapp.flights
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.application.Application
+import io.ktor.application.ApplicationCall
 import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.auth.Authentication
@@ -26,6 +27,8 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.resources
 import io.ktor.http.content.static
 import io.ktor.locations.Locations
+import io.ktor.locations.locations
+import io.ktor.response.respondRedirect
 import io.ktor.response.respondText
 import io.ktor.routing.routing
 import io.ktor.sessions.SessionTransportTransformerMessageAuthentication
@@ -99,4 +102,8 @@ private fun Application.installFeatures() {
     install(ContentNegotiation) {
         gson()
     }
+}
+
+suspend fun ApplicationCall.redirect(location: Any) {
+    respondRedirect(application.locations.href(location))
 }

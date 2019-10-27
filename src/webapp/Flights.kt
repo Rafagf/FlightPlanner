@@ -6,8 +6,10 @@ import com.rafag.flightplanner.getDate
 import com.rafag.flightplanner.model.UserSession
 import com.rafag.flightplanner.model.domain.Flight
 import com.rafag.flightplanner.model.domain.Price
+import com.rafag.flightplanner.redirect
 import com.rafag.flightplanner.repositories.flights.FlightsRepository
 import com.rafag.flightplanner.repositories.user.UserRepository
+import com.rafag.flightplanner.webapp.viewmodel.map
 import io.ktor.application.call
 import io.ktor.freemarker.FreeMarkerContent
 import io.ktor.http.Parameters

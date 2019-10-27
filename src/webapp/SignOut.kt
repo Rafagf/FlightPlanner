@@ -1,7 +1,7 @@
 package webapp
 
 import com.rafag.flightplanner.model.UserSession
-import com.rafag.flightplanner.webapp.redirect
+import com.rafag.flightplanner.redirect
 import io.ktor.application.call
 import io.ktor.locations.Location
 import io.ktor.locations.get
