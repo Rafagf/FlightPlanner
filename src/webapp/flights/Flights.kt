@@ -80,7 +80,7 @@ fun Route.flights(
                 flightsRepository.remove(id)
             }
             "add" -> {
-                flightsRepository.add(createFlight(params = params), userId = user!!.userId)
+                flightsRepository.add(createFlight(params), user!!.userId)
             }
         }
 
