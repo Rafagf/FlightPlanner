@@ -1,6 +1,6 @@
 # FlightPlanner
 
-[Flight planner](https://theflightplanner.herokuapp.com/) helps you keep track of your flights. It is a personal pet project to get some backend skills (mobile developer here!).
+[Flight planner](https://theflightplanner.herokuapp.com/) helps you keep track of your flights. It is a personal pet project to practice some backend skills (mobile developer here!).
  
 * **Backend + API**: [Ktor](https://ktor.io/) and [PostGresSQL](https://www.postgresql.org/). 
 
@@ -16,9 +16,8 @@ Although the website does not use it, an API has been provided to login and add 
 By doing a POST in */login* with your username and password you'll get your token to then do POST in */api/v1/flights* and add new flights into your account.
 
 ### Next steps
-Some things I have in mind to do to improve the project. PR or issues are more than welcome!  
 * Error handling is almost non-existent in the API side.
-* No unit-tests (need to figure out *what* to test)
-* The front-end is a bit rubbish
+* No unit-tests
+* The front-end isn't great
 * Add more endpoints to the API (i.e POST */signup* or DELETE */flights/{userId}/{flightId}*)
 * Build a mobile client (Android/iOS app). 
