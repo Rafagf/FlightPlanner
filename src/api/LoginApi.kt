@@ -2,8 +2,8 @@ package api
 
 import com.rafag.flightplanner.auth.JwtService
 import com.rafag.flightplanner.auth.hash
+import com.rafag.flightplanner.redirect
 import com.rafag.flightplanner.repositories.user.UserRepository
-import com.rafag.flightplanner.webapp.redirect
 import io.ktor.application.call
 import io.ktor.http.Parameters
 import io.ktor.locations.Location
