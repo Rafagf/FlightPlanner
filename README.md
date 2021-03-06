@@ -18,6 +18,6 @@ By doing a POST in */login* with your username and password you'll get your toke
 ### Next steps
 * Error handling is almost non-existent in the API side.
 * No unit-tests
-* The front-end isn't great
+* The front-end could get a lot more love.
 * Add more endpoints to the API (i.e POST */signup* or DELETE */flights/{userId}/{flightId}*)
 * Build a mobile client (Android/iOS app). 
