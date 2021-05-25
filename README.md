@@ -1,6 +1,6 @@
 # FlightPlanner
 
-[Flight planner](https://theflightplanner.herokuapp.com/) helps you keep track of your flights. It is a personal pet project that can be used as a guide to build a backend, api and a web using Ktor. I've described the whole process on this [article](https://www.rafagarcia.dev/development/building-a-backend-an-api-and-a-web-client-using-ktor/)
+[Flight planner](https://theflightplanner.herokuapp.com/) helps you keep track of your flights. It is a personal pet project that can be used as a guide to build a backend, api and a web using Ktor. I've described the whole process on this [article](https://www.rafagarcia.dev/development/building-a-backend-an-api-and-a-web-client-using-ktor/), which was featured by the official [Kotlin twitter account](https://twitter.com/kotlin/status/1384900249630740482) 
  
 * **Backend + API**: [Ktor](https://ktor.io/) and [PostGresSQL](https://www.postgresql.org/). 
 
